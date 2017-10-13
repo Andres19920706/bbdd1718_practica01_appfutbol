@@ -37,7 +37,8 @@ public class Equipo implements Serializable  {
         this.posicion = posicion;
         this.nameEquipo = nameEquipo;
         this.ljuga = new ArrayList<>();
-        this.ljuga = ljuga;           
+        this.ljuga = ljuga;      
+        this.recintoDeportivo = recintoDeportivo;
     }
 
 

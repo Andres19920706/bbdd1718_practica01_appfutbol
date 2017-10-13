@@ -41,13 +41,13 @@ public class AppFutbol {
     
     public static AppFutbolMenu  iu = new AppFutbolMenu();
     public static short[] datosSistema = {0,0}; //Varibale para saber que tipo de clase mostrar en la interfaz "ListarTodo"
-                                          //Codigo , id -  Clase
-                                          //  0     -  lEquipos (default)
-                                          //  1     -  lJugadores
-                                          //  2     -  lJugadoresDisponibles
-                                          //  3     -  lArbitros
-                                          //  4     -  lPartidos
-                                          //  5     -  lEstadios
+                                          //Codigo , id     -       Clase
+                                          //   0   , x      -  lJugadores (default)
+                                          //   1   , x      -  lJugadoresDisponibles
+                                          //   2   , x      -  lArbitros
+                                          //   3   , x      -  lEquipos
+                                          //   4   , x      -  lPartidos
+                                          //   5   , x      -  lEstadios
     //Atributos
     
     //Un HashMap se puede definir como un diccionario de datos

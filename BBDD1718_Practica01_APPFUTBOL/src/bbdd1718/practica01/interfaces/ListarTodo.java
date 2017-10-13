@@ -7,6 +7,8 @@ package bbdd1718.practica01.interfaces;
 
 
 import bbdd1718.practica01.clases.AppFutbol;
+import bbdd1718.practica01.clases.Arbitro;
+import bbdd1718.practica01.clases.Equipo;
 import bbdd1718.practica01.clases.Jugador;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -72,12 +74,27 @@ public class ListarTodo extends javax.swing.JFrame {
 
         jButtonJugadoresDisponibles.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButtonJugadoresDisponibles.setText("Jugadores Disponibles");
+        jButtonJugadoresDisponibles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonJugadoresDisponiblesMouseClicked(evt);
+            }
+        });
 
         jButtonArbitros.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButtonArbitros.setText("Arbitros");
+        jButtonArbitros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonArbitrosMouseClicked(evt);
+            }
+        });
 
         jButtonEquipos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButtonEquipos.setText("Equipos");
+        jButtonEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEquiposMouseClicked(evt);
+            }
+        });
 
         jButtonEstadios.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButtonEstadios.setText("Estadios");
@@ -183,7 +200,7 @@ public class ListarTodo extends javax.swing.JFrame {
             }
             this.jListDatos.setModel(modelo); //Lo añaddimos al jList
             this.jListDatos.setToolTipText("id: nombre");
-            AppFutbol.datosSistema[0] = 0;
+            AppFutbol.datosSistema[0] = 0; //Indicamos que es la lista de jugadores
             
         }else{//No hay jugadores en el sistema.
             JOptionPane.showMessageDialog(null, "No hay jugadores en el sistema ",
@@ -194,20 +211,84 @@ public class ListarTodo extends javax.swing.JFrame {
 
     private void jListDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListDatosMouseClicked
         // TODO add your handling code here:
-        System.out.println("Hooolaaa");
+        
         String [] seleccion = this.jListDatos.getSelectedValue().split(":");
         short key = Short.parseShort(seleccion[0]);
         
         switch(AppFutbol.datosSistema[0]){
             case 0:
-                //Listmoas el jugador seleccionado
-                System.out.println("oooo: "+key);
-                AppFutbol.datosSistema[1] = key;
+                //Listamos el jugador seleccionado
+                AppFutbol.datosSistema[1] = key; //Indicamos el jugador seleccionado
                 new MostrarJugador();
-                
+                break;
+            case 1:
+                //Listamos el jugador seleccionado
+                AppFutbol.datosSistema[1] = key; //Indicamos el jugador disponible seleccionado
+                new MostrarJugador();
+                break;
+            case 2:
+                //Listamos el arbitro seleccionado
+                AppFutbol.datosSistema[1] = key; //Indicamos el arbitro seleccionado
+                new MostrarArbitro();
+                break;
+            case 3:
+                //Listamos el equipo seleccionado
+                AppFutbol.datosSistema[1] = key; //Indicamos el arbitro seleccionado
+                new MostrarEquipo();
                 break;
         }
     }//GEN-LAST:event_jListDatosMouseClicked
+
+    private void jButtonJugadoresDisponiblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonJugadoresDisponiblesMouseClicked
+        // Boton para mostrar los jugadores disponibles
+        if(!AppFutbol.lJugadoresDisponibles.isEmpty()){
+            DefaultListModel modelo = new DefaultListModel(); //Contendor
+            for(Jugador ar: AppFutbol.lJugadoresDisponibles.values()){
+                modelo.addElement(ar.id+": "+ar.nombre); //modelo.addElement(ju.nombre);
+            }
+            this.jListDatos.setModel(modelo); //Lo añaddimos al jList
+            this.jListDatos.setToolTipText("id: nombre");
+            AppFutbol.datosSistema[0] = 1; //Indicamos que es la lista de jugadores disponibles
+            
+        }else{//No hay jugadores en el sistema.
+            JOptionPane.showMessageDialog(null, "No hay jugadores disponibles en el sistema ",
+                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonJugadoresDisponiblesMouseClicked
+
+    private void jButtonArbitrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonArbitrosMouseClicked
+        // Boton para mostrar los arbitros
+        if(!AppFutbol.lArbitros.isEmpty()){
+            DefaultListModel modelo = new DefaultListModel(); //Contendor
+            for(Arbitro ar: AppFutbol.lArbitros.values()){
+                modelo.addElement(ar.id+": "+ar.nombre); //modelo.addElement(ju.nombre);
+            }
+            this.jListDatos.setModel(modelo); //Lo añaddimos al jList
+            this.jListDatos.setToolTipText("id: nombre");
+            AppFutbol.datosSistema[0] = 2; //Indicamos que es la lista de arbitros disponibles
+            
+        }else{//No hay jugadores en el sistema.
+            JOptionPane.showMessageDialog(null, "No hay arbitros en el sistema ",
+                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonArbitrosMouseClicked
+
+    private void jButtonEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEquiposMouseClicked
+        // Boton para mostrar los equipos
+        if(!AppFutbol.lEquipos.isEmpty()){
+            DefaultListModel modelo = new DefaultListModel(); //Contendor
+            for(Equipo ar: AppFutbol.lEquipos.values()){
+                modelo.addElement(ar.getIdEquipo()+": "+ar.getNameEquipo()); //modelo.addElement(ju.nombre);
+            }
+            this.jListDatos.setModel(modelo); //Lo añaddimos al jList
+            this.jListDatos.setToolTipText("id: nombre");
+            AppFutbol.datosSistema[0] = 3; //Indicamos que es la lista de arbitros disponibles
+            
+        }else{//No hay jugadores en el sistema.
+            JOptionPane.showMessageDialog(null, "No hay arbitros en el sistema ",
+                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonEquiposMouseClicked
 
     /**
      * @param args the command line arguments

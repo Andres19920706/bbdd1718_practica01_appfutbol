@@ -153,6 +153,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Jugadores Disponibles"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonJugadoresDisponiblesMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonArbitros">
       <Properties>
@@ -161,6 +164,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Arbitros"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonArbitrosMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEquipos">
       <Properties>
@@ -169,6 +175,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Equipos"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonEquiposMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEstadios">
       <Properties>
