@@ -46,7 +46,7 @@ public class AppFutbol {
                                           //   1   , x      -  lJugadoresDisponibles
                                           //   2   , x      -  lArbitros
                                           //   3   , x      -  lEquipos
-                                          //   4   , x      -  lPartidos
+                                          //   4   , x      -  lPartidos  <-- Aqui me quedo
                                           //   5   , x      -  lEstadios
     //Atributos
     

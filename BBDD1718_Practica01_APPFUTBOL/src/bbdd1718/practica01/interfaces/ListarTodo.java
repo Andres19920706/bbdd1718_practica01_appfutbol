@@ -9,7 +9,9 @@ package bbdd1718.practica01.interfaces;
 import bbdd1718.practica01.clases.AppFutbol;
 import bbdd1718.practica01.clases.Arbitro;
 import bbdd1718.practica01.clases.Equipo;
+import bbdd1718.practica01.clases.Estadio;
 import bbdd1718.practica01.clases.Jugador;
+import bbdd1718.practica01.clases.Partido;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -98,9 +100,19 @@ public class ListarTodo extends javax.swing.JFrame {
 
         jButtonEstadios.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButtonEstadios.setText("Estadios");
+        jButtonEstadios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEstadiosMouseClicked(evt);
+            }
+        });
 
         jButtonPartidos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButtonPartidos.setText("Partidos");
+        jButtonPartidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonPartidosMouseClicked(evt);
+            }
+        });
 
         jListDatos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -236,6 +248,18 @@ public class ListarTodo extends javax.swing.JFrame {
                 AppFutbol.datosSistema[1] = key; //Indicamos el arbitro seleccionado
                 new MostrarEquipo();
                 break;
+            case 4:
+                //Listamos el partido seleccionado
+                AppFutbol.datosSistema[1] = key; //Indicamos el arbitro seleccionado
+                //new MostrarEquipo();
+//TODO falta crear
+                break;
+            case 5:
+                //Listamos el estadio seleccionado seleccionado
+                AppFutbol.datosSistema[1] = key; //Indicamos el arbitro seleccionado
+                //new MostrarEquipo();
+//TODO falta crear
+                break;
         }
     }//GEN-LAST:event_jListDatosMouseClicked
 
@@ -285,10 +309,44 @@ public class ListarTodo extends javax.swing.JFrame {
             AppFutbol.datosSistema[0] = 3; //Indicamos que es la lista de arbitros disponibles
             
         }else{//No hay jugadores en el sistema.
-            JOptionPane.showMessageDialog(null, "No hay arbitros en el sistema ",
+            JOptionPane.showMessageDialog(null, "No hay equipos en el sistema ",
                         "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonEquiposMouseClicked
+
+    private void jButtonEstadiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEstadiosMouseClicked
+        // Boton para mostrar los estadios
+        if(!AppFutbol.lEstadios.isEmpty()){
+            DefaultListModel modelo = new DefaultListModel(); //Contendor
+            for(Estadio ar: AppFutbol.lEstadios.values()){
+                modelo.addElement(ar.getIdEstadio()+": "+ar.getCiudad()); //modelo.addElement(ju.nombre);
+            }
+            this.jListDatos.setModel(modelo); //Lo añaddimos al jList
+            this.jListDatos.setToolTipText("id: ciudad");
+            AppFutbol.datosSistema[0] = 5; //Indicamos que es la lista de estadio disponibles
+            
+        }else{//No hay jugadores en el sistema.
+            JOptionPane.showMessageDialog(null, "No hay estadios en el sistema ",
+                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonEstadiosMouseClicked
+
+    private void jButtonPartidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPartidosMouseClicked
+        // Boton para mostrar los partidos
+        if(!AppFutbol.lPartidos.isEmpty()){
+            DefaultListModel modelo = new DefaultListModel(); //Contendor
+            for(Partido ar: AppFutbol.lPartidos.values()){
+                modelo.addElement(ar.getIdPartido()+": "+ar.getFecha()+", "+ar.getLeq1().getNameEquipo()+" vs "+ar.getEq2().getNameEquipo()); //modelo.addElement(ju.nombre);
+            }
+            this.jListDatos.setModel(modelo); //Lo añaddimos al jList
+            this.jListDatos.setToolTipText("id: fecha, equipo 1 vs equipo 2");
+            AppFutbol.datosSistema[0] = 4; //Indicamos que es la lista de partido
+            
+        }else{//No hay jugadores en el sistema.
+            JOptionPane.showMessageDialog(null, "No hay partidos en el sistema ",
+                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonPartidosMouseClicked
 
     /**
      * @param args the command line arguments

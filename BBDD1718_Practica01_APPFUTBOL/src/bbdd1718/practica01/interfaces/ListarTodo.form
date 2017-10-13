@@ -186,6 +186,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Estadios"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonEstadiosMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonPartidos">
       <Properties>
@@ -194,6 +197,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Partidos"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonPartidosMouseClicked"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
