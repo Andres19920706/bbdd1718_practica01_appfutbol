@@ -261,6 +261,10 @@ public class AltaEquipo extends javax.swing.JFrame {
             
             try{
                 idEquipo = Integer.parseInt(this.inputIdEquipo.getText() ); //Identificador del equipo.
+                if(idEquipo<=0){
+                    JOptionPane.showMessageDialog(null, "El id ha de ser > 0","AppFutbol",JOptionPane.ERROR_MESSAGE);
+                    reemplazar = false; //No damos de alta al equipo.
+                }
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, MSG[2],"AppFutbol",JOptionPane.ERROR_MESSAGE);
                 idEquipo = -1; //Indicamos que el identificador introducido es erroneo
@@ -354,6 +358,7 @@ public class AltaEquipo extends javax.swing.JFrame {
                         
                         //2.4.3) Añadimos el jugador a la lista
                         if(!posicionRepetida){//Si hay titular y no se repite la posicion
+                            AppFutbol.lJugadores.get(keyIntJugador).setIdEquipo(idEquipo);
                             lju.add( AppFutbol.lJugadores.get(keyIntJugador)); //Lo añadimos a la lista del equipo
                         }
                     }

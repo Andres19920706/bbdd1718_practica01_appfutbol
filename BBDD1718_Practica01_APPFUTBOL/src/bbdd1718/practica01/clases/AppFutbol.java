@@ -103,6 +103,8 @@ public class AppFutbol {
                 //Extreamos los jugadores
                 for(int i=0;i<lju.size();i++){
                     ju = (Jugador) lju.get(i);
+                    AppFutbol.lJugadores.get(new Integer(ju.id)).setIdEquipo(0); //Indicamos que no pertenece a ningun equipo (para jugadores)
+                    ju.setIdEquipo(0);//Indicamos que no pertenece a ningun equipo  (para ljugadoresDisponibles)
                     AppFutbol.lJugadoresDisponibles.put(new Integer(ju.id), ju);
                 }
                 //Borramos el equipo

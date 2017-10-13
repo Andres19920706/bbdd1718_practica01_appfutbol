@@ -201,9 +201,9 @@ public class ListarTodo extends javax.swing.JFrame {
         switch(AppFutbol.datosSistema[0]){
             case 0:
                 //Listmoas el jugador seleccionado
+                System.out.println("oooo: "+key);
                 AppFutbol.datosSistema[1] = key;
-                System.out.println("jugador");
-                 new MostrarJugador();
+                new MostrarJugador();
                 
                 break;
         }

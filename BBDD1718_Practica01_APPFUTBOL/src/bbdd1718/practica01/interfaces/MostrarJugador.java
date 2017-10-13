@@ -7,6 +7,7 @@ package bbdd1718.practica01.interfaces;
 
 import bbdd1718.practica01.clases.AppFutbol;
 import bbdd1718.practica01.clases.Jugador;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -25,8 +26,23 @@ public class MostrarJugador extends javax.swing.JFrame {
         this.setVisible(true);
         
         //
-        Jugador j = AppFutbol.lJugadores.get(AppFutbol.datosSistema[1]);
+        Jugador j = AppFutbol.lJugadores.get(new Integer(AppFutbol.datosSistema[1]));
+        System.out.println("key"+AppFutbol.datosSistema[1]+" Name: "+j.nombre);
         this.inputNombre.setText(j.nombre);
+        this.inputEmail.setText(j.getEmail());
+        this.inputTelefono.setText(j.getTlf());
+        this.inputSalario.setText(j.getSalario().toString());
+        this.inputPosicion.setText(j.getPosicion());
+        this.inputTitular.setText(Boolean.toString(j.getTitular()));
+        this.inputNum.setText(Integer.toString(j.getNum()));
+        try{
+            this.inputEquipos.setText(AppFutbol.lEquipos.get(j.getIdEquipo()).getNameEquipo());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "El jugador no pertenece a ningun equipo",
+                        "AppFutbol",JOptionPane.ERROR_MESSAGE);
+            this.inputEquipos.setText("0"); //0 indica que no pertecene a ningun equipo
+        }
+
     }
 
     /**
@@ -44,6 +60,20 @@ public class MostrarJugador extends javax.swing.JFrame {
         jLabelNombre = new javax.swing.JLabel();
         inputNombre = new javax.swing.JLabel();
         jButtonCerrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        inputEmail = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        inputTelefono = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        inputSalario = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        inputEquipos = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        inputTitular = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        inputPosicion = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        inputNum = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +83,7 @@ public class MostrarJugador extends javax.swing.JFrame {
         labelSubTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelSubTitulo.setText("Datos del Jugador");
 
+        jLabelNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelNombre.setText("Nombre:");
 
         inputNombre.setText("jLabel1");
@@ -64,6 +95,41 @@ public class MostrarJugador extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setText("E-mail:");
+
+        inputEmail.setText("jLabel2");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Telefono:");
+
+        inputTelefono.setText("jLabel4");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setText("Salario:");
+
+        inputSalario.setText("jLabel6");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("Equipo:");
+
+        inputEquipos.setText("jLabel8");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setText("Titular:");
+
+        inputTitular.setText("jLabel10");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setText("Poscion:");
+
+        inputPosicion.setText("jLabel12");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setText("Num:");
+
+        inputNum.setText("jLabel14");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,19 +139,46 @@ public class MostrarJugador extends javax.swing.JFrame {
                 .addComponent(labelSubTitulo)
                 .addGap(128, 128, 128))
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonCerrar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelNombre)
-                            .addGap(18, 18, 18)
-                            .addComponent(inputNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(109, 109, 109)
-                            .addComponent(labelTitulo))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel13))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(inputPosicion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                        .addComponent(inputNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(inputTelefono)
+                                    .addComponent(inputEquipos)
+                                    .addComponent(inputSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonCerrar)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(69, 69, 69)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(inputTitular)
+                                        .addComponent(inputNum)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(109, 109, 109)
+                                    .addComponent(labelTitulo))
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(22, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,7 +193,35 @@ public class MostrarJugador extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
                     .addComponent(inputNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputEmail)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(inputTelefono))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(inputEquipos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(inputPosicion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputSalario)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(inputTitular))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(inputNum))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jButtonCerrar)
                 .addContainerGap())
         );
@@ -151,8 +272,22 @@ public class MostrarJugador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel inputEmail;
+    private javax.swing.JLabel inputEquipos;
     private javax.swing.JLabel inputNombre;
+    private javax.swing.JLabel inputNum;
+    private javax.swing.JLabel inputPosicion;
+    private javax.swing.JLabel inputSalario;
+    private javax.swing.JLabel inputTelefono;
+    private javax.swing.JLabel inputTitular;
     private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelSubTitulo;
