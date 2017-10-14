@@ -35,11 +35,16 @@ public class MostrarJugador extends javax.swing.JFrame {
         this.inputPosicion.setText(j.getPosicion());
         this.inputTitular.setText(Boolean.toString(j.getTitular()));
         this.inputNum.setText(Integer.toString(j.getNum()));
-        try{
-            this.inputEquipos.setText(AppFutbol.lEquipos.get(j.getIdEquipo()).getNameEquipo());
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "El jugador no pertenece a ningun equipo",
-                        "AppFutbol",JOptionPane.ERROR_MESSAGE);
+        //Comprobramos si se pidio mostrar a todos los jugadores o solo a los disponibles
+        if(AppFutbol.datosSistema[0]==0){//Se pidio mostrar todos los jugadores
+            try{
+                this.inputEquipos.setText(AppFutbol.lEquipos.get(j.getIdEquipo()).getNameEquipo());
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "El jugador no pertenece a ningun equipo",
+                            "AppFutbol",JOptionPane.ERROR_MESSAGE);
+                this.inputEquipos.setText("0"); //0 indica que no pertecene a ningun equipo
+            }
+        }else{//Se pidio mostrar jugadores disponibles
             this.inputEquipos.setText("0"); //0 indica que no pertecene a ningun equipo
         }
 

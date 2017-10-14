@@ -251,14 +251,12 @@ public class ListarTodo extends javax.swing.JFrame {
             case 4:
                 //Listamos el partido seleccionado
                 AppFutbol.datosSistema[1] = key; //Indicamos el arbitro seleccionado
-                //new MostrarEquipo();
-//TODO falta crear
+                new MostrarPartido();
                 break;
             case 5:
                 //Listamos el estadio seleccionado seleccionado
                 AppFutbol.datosSistema[1] = key; //Indicamos el arbitro seleccionado
-                //new MostrarEquipo();
-//TODO falta crear
+                new MostrarEstadio();
                 break;
         }
     }//GEN-LAST:event_jListDatosMouseClicked
