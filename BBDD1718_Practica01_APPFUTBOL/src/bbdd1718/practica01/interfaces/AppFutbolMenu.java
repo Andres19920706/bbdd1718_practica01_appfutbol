@@ -242,31 +242,47 @@ public class AppFutbolMenu extends javax.swing.JFrame {
                         "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
                     this.setVisible(true);                    
                 }else{
-                    w = new BajaPartido();//AltaPartido windows8 = new AltaPartido();
+                    w = new BajaPartido();//AltaPartido windows9 = new AltaPartido();
                     this.setVisible(false);
                     w.setVisible(true);
                 }
                 break;
             case 10:
-                JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,
-                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
                 //Mostrar datos del sistema
-                w = new ListarTodo();//AltaPartido windows8 = new AltaPartido();
+                w = new ListarTodo();//AltaPartido windows10 = new AltaPartido();
                 this.setVisible(false);
                 w.setVisible(true);
                 
                 break;
             case 11:
-                JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,
+                //Listar partidos dada una fecha
+                if(AppFutbol.lPartidos.isEmpty()){//No hay partidos
+                    JOptionPane.showMessageDialog(null, "No hay partidos en el sistema",
                         "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(true);                    
+                }else{
+                    w = new MostrarPartidosDadoFecha();//MostrarPartidosDadoFecha windows11 = new MostrarPartidosDadoFecha();
+                    this.setVisible(false);
+                    w.setVisible(true);
+                }
                 break;
             case 12:
-                JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,
+                //Listar partidos hechos por un equipo
+                if(AppFutbol.lPartidos.isEmpty() ||AppFutbol.lEquipos.isEmpty()){//No hay partidos
+                    JOptionPane.showMessageDialog(null, "No hay partidos o equipos en el sistema",
                         "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(true);                    
+                }else{
+                    w = new MostrarPartidosDeEquipo();//MostrarPartidosDeEquipo windows11 = new MostrarPartidosDeEquipo();
+                    this.setVisible(false);
+                    w.setVisible(true);
+                }
                 break;
             case 13:
                 JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,
                         "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+                //Listar los jugadores de una posicion
+//TODO Crear
                 break;
             case 14:
                 JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,

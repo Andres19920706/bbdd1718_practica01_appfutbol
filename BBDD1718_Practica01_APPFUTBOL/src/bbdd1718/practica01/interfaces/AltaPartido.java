@@ -46,11 +46,11 @@ public class AltaPartido extends javax.swing.JFrame {
         }
         this.jListEquipos.setModel(modeloEquipo); //Lo añaddimos al jList de Arbitros
         
-            //Lista de estadios
-            this.jComboBoxEstadio.addItem("Seleccione estadio");
-            for(Estadio es : AppFutbol.lEstadios.values()){
-                this.jComboBoxEstadio.addItem(es.getIdEstadio()+": " + es.getCiudad());//Lo añaddimos al jList de Arbitros
-            }
+        //Lista de estadios
+        this.jComboBoxEstadio.addItem("Seleccione estadio");
+        for(Estadio es : AppFutbol.lEstadios.values()){
+            this.jComboBoxEstadio.addItem(es.getIdEstadio()+": " + es.getCiudad());//Lo añaddimos al jList de Arbitros
+        }
     }
 
     /**
