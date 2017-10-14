@@ -273,24 +273,40 @@ public class AppFutbolMenu extends javax.swing.JFrame {
                         "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
                     this.setVisible(true);                    
                 }else{
-                    w = new MostrarPartidosDeEquipo();//MostrarPartidosDeEquipo windows11 = new MostrarPartidosDeEquipo();
+                    w = new MostrarPartidosDeEquipo();//MostrarPartidosDeEquipo windows12 = new MostrarPartidosDeEquipo();
                     this.setVisible(false);
                     w.setVisible(true);
                 }
                 break;
             case 13:
-                JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,
-                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
                 //Listar los jugadores de una posicion
-//TODO Crear
+                if(AppFutbol.lJugadores.isEmpty() ){//No hay partidos
+                    JOptionPane.showMessageDialog(null, "No hay jugadores en el sistema",
+                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(true);                    
+                }else{
+                    w = new MostrarJugadoresDadaPosicion();//MostrarJugadoresDadaPosicion windows13 = new MostrarJugadoresDadaPosicion();
+                    this.setVisible(false);
+                    w.setVisible(true);
+                }
                 break;
             case 14:
                 JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,
                         "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+                //Listar la ficha de los jugadores de un Equipo
+                if(AppFutbol.lJugadores.isEmpty() || AppFutbol.lEquipos.isEmpty() ){//No hay partidos
+                    JOptionPane.showMessageDialog(null, "No hay jugadores o equipos en el sistema",
+                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(true);                    
+                }else{
+                    w = new MostrarJugadoresEquipo();//MostrarPartidosDeEquipo windows14 = new MostrarPartidosDeEquipo();
+                    this.setVisible(false);
+                    w.setVisible(true);
+                }
+                
                 break;
             case 15:
                 //Cargar datos
-                System.out.println("EEE");
                 try{
                     AppFutbol.CargarDatos();
                 }catch(IOException | ClassNotFoundException e){
@@ -301,9 +317,9 @@ public class AppFutbolMenu extends javax.swing.JFrame {
                 break;                                
             case 16:
                 //Guardar datos en el sistemas
-                if(AppFutbol.lJugadores.isEmpty()==true /*&& AppFutbol.lEstadios.isEmpty()==true && 
+                if(AppFutbol.lJugadores.isEmpty()==true && AppFutbol.lEstadios.isEmpty()==true && 
                         AppFutbol.lArbitros.isEmpty()==true && AppFutbol.lPartidos.isEmpty()==true &&
-                        AppFutbol.lEquipos.isEmpty()==true*/){
+                        AppFutbol.lEquipos.isEmpty()==true){
                     JOptionPane.showMessageDialog(null, "Las listas estan vacías",
                         "AppFutbol",JOptionPane.ERROR_MESSAGE);
                 }else{
@@ -319,16 +335,16 @@ public class AppFutbolMenu extends javax.swing.JFrame {
                 }//Fin del if_else que comprueba si las listas estan vacias
                 this.setVisible(true);
                 
-                
                 break;
             case 17:
                 JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,
                         "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
-                
+                //Calcular Campeon
                 break;
             case 18:
                 JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,
                         "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+                //Calcular Posiciones
                 break;
             default:
                 this.setVisible(true);

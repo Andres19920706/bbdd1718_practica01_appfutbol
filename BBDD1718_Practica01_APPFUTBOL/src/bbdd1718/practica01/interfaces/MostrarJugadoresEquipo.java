@@ -7,7 +7,6 @@ package bbdd1718.practica01.interfaces;
 
 import bbdd1718.practica01.clases.AppFutbol;
 import bbdd1718.practica01.clases.Equipo;
-import bbdd1718.practica01.clases.Partido;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -15,23 +14,23 @@ import javax.swing.JOptionPane;
  *
  * @author Andres
  */
-public class MostrarPartidosDeEquipo extends javax.swing.JFrame {
+public class MostrarJugadoresEquipo extends javax.swing.JFrame {
 
     /**
-     * Creates new form MostrarPartidosDeEquipo
+     * Creates new form MostrarJugadoresEquipo
      */
-    public MostrarPartidosDeEquipo() {
+    public MostrarJugadoresEquipo() {
         initComponents();
         this.setLocationRelativeTo(null);//centramos.
-        this.setTitle("Datos del partido");
+        this.setTitle("Posiciones de los Jugadores");
         
         //Lista de estadios
-        this.jComBoxEquipos.addItem("Seleccione Equipo");
+        this.jComboBoxEquipos.addItem("Seleccione posicion");
         for(Equipo equi : AppFutbol.lEquipos.values()){
-            this.jComBoxEquipos.addItem(equi.getIdEquipo()+": " + equi.getNameEquipo());//Lo añaddimos al jList de Arbitros
+            this.jComboBoxEquipos.addItem(equi.getNameEquipo());//Lo añaddimos al jComboBox
         }
-        this.jComBoxEquipos.setToolTipText("Id - Nombre");
-        this.jComBoxEquipos.setSelectedIndex(0); //Valor por defcto
+        this.jComboBoxEquipos.setToolTipText("Posicion a buscar");
+        this.jComboBoxEquipos.setSelectedIndex(0); //Valor por defcto
         vaciarResultado();
     }
 
@@ -45,13 +44,13 @@ public class MostrarPartidosDeEquipo extends javax.swing.JFrame {
     private void initComponents() {
 
         labelTitulo = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         labelSubTitulo = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jComBoxEquipos = new javax.swing.JComboBox<>();
+        jComboBoxEquipos = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jListResutadoPartidos = new javax.swing.JList<>();
+        jListResutadoBusqueda = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -62,25 +61,25 @@ public class MostrarPartidosDeEquipo extends javax.swing.JFrame {
         labelTitulo.setText("App Futbol Menu");
 
         labelSubTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labelSubTitulo.setText("Datos del Partido");
+        labelSubTitulo.setText("Jugadores de un Equipo");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Equipos:");
+        jLabel1.setText("Equipo:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Resultado:");
 
-        jListResutadoPartidos.setModel(new javax.swing.AbstractListModel<String>() {
+        jListResutadoBusqueda.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jListResutadoPartidos.addMouseListener(new java.awt.event.MouseAdapter() {
+        jListResutadoBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jListResutadoPartidosMouseClicked(evt);
+                jListResutadoBusquedaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jListResutadoPartidos);
+        jScrollPane1.setViewportView(jListResutadoBusqueda);
 
         jButton1.setText("Menu");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,148 +107,133 @@ public class MostrarPartidosDeEquipo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(labelTitulo)
-                                        .addGap(126, 126, 126))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(labelSubTitulo)
-                                        .addGap(146, 146, 146))))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(105, 105, 105)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(labelTitulo)
+                        .addGap(138, 138, 138))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComBoxEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton3)
+                                .addGap(107, 107, 107)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelSubTitulo))
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jComboBoxEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel2)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(18, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(labelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelSubTitulo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComBoxEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jComboBoxEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // Botón para volver al menu
+        // Boton para volver al menu
         this.dispose();
         AppFutbol.iu.setVisible(true);
-        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // Botón para limpiar
-        this.jComBoxEquipos.setSelectedIndex(0); //Valor por defcto
+        // Boton para limpiar
+        this.jComboBoxEquipos.setSelectedIndex(0); //Valor por defcto
         vaciarResultado();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // Botón par buscar los partidos de un equipo
+        // Boton para realizar la busqueda
         Boolean exito = false;
         
-        if(this.jComBoxEquipos.getSelectedIndex()==0){
-            JOptionPane.showMessageDialog(null, "Selecionado un equipo ",
+        if(this.jComboBoxEquipos.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(null, "Selecione un equipo ",
                         "AppFutbol",JOptionPane.ERROR_MESSAGE);
         }else{
-            
-            String [] keyStringEstadio = ((String) this.jComBoxEquipos.getSelectedItem()).split(":"); //Valor del jlistEstadios
-            String nameEqBuscar = keyStringEstadio[1].replaceAll("\\s",""); //Extraemos el nombre del equipo, eliminado: espacios, tabuladores, retornos
-            
+            String equipoBuscar = ((String) this.jComboBoxEquipos.getSelectedItem()); //Valor del jlistEstadios
+
             DefaultListModel modelo = new DefaultListModel(); //Contendor
-            for(Partido var : AppFutbol.lPartidos.values()){
-                /*
-                System.out.println("Equipo 1: "+var.getEq1().getNameEquipo());
-                System.out.println("Equipo 2: "+var.getEq2().getNameEquipo());
-                System.out.println("Equipo de busqueda: "+nameEqBuscar);
-                System.out.println("Caso A: "+var.getEq1().getNameEquipo().equals(nameEqBuscar) );
-                System.out.println("Caso B: "+var.getEq2().getNameEquipo().equals(nameEqBuscar) );
-                System.out.println("-------------------------------------------");
-                */
-                if(var.getEq1().getNameEquipo().equals(nameEqBuscar) || var.getEq2().getNameEquipo().equals(nameEqBuscar)){
-                    modelo.addElement(var.getIdPartido()+": "+var.getFecha()+", "+var.getEq1().getNameEquipo()+" vs "+var.getEq2().getNameEquipo()+", "+var.getIda());
-                    exito = true;
+            
+            for(Equipo equipoName : AppFutbol.lEquipos.values()){
+                if(equipoName.getNameEquipo().equals(equipoBuscar)){
+                    for(int i=0;i<equipoName.getLjuga().size();i++){
+                        modelo.addElement(equipoName.getLjuga().get(i).id+": "+equipoName.getLjuga().get(i).nombre);
+                    }
+                    exito=true;
                 }
             }
             
             if(exito){
-                this.jListResutadoPartidos.setEnabled(true);
-                this.jListResutadoPartidos.setModel(modelo); //Lo añaddimos al jList
-                this.jListResutadoPartidos.setToolTipText("ID: Fecha, Equipo 1 vs Equipos 2, ida");
+                this.jListResutadoBusqueda.setEnabled(true);
+                this.jListResutadoBusqueda.setModel(modelo); //Lo añaddimos al jList
+                this.jListResutadoBusqueda.setToolTipText("ID: Nombre");
             }else{
-                JOptionPane.showMessageDialog(null, "No hay partidos para el equipo "+nameEqBuscar,
+                JOptionPane.showMessageDialog(null, "No se encuentra el equipo: "+equipoBuscar,
                         "AppFutbol",JOptionPane.ERROR_MESSAGE);
-                this.jListResutadoPartidos.setEnabled(false);
+                this.jListResutadoBusqueda.setEnabled(false);
             }
-            
-            
-
         }
-        
     }//GEN-LAST:event_jButton3MouseClicked
 
-    private void jListResutadoPartidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListResutadoPartidosMouseClicked
-        // Click sobre el partido de la lista
-        if(this.jListResutadoPartidos.getSelectedValue()==""|| this.jListResutadoPartidos.getSelectedValue()==null){ //Hizo clic en la lista vacia
+    private void jListResutadoBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListResutadoBusquedaMouseClicked
+        // Ficha del jugador seleccionado
+        if(this.jListResutadoBusqueda.getSelectedValue()=="" || this.jListResutadoBusqueda.getSelectedValue()==null){ //Hizo clic en la lista vacia
             JOptionPane.showMessageDialog(null, "Error, no se detecta el partido seleccionado ",
                         "AppFutbol",JOptionPane.ERROR_MESSAGE);
         }else{//Presiono sobre partido
-            String [] datos = this.jListResutadoPartidos.getSelectedValue().split(":");
-            short keyIntPartido = Short.parseShort(datos[0]);
-            AppFutbol.datosSistema[1] = keyIntPartido;
-            new MostrarPartido();
-            
+            //Extremos el identificador del jugador
+            String [] datos = this.jListResutadoBusqueda.getSelectedValue().split(":");
+            short keyIntJugador = Short.parseShort(datos[0]);
+            //Mostramos la ficha del jugador
+            AppFutbol.datosSistema[0]=1; //Indiamos que no nos informe si el jugador pertenece a un equipo (solicitud de jugadores disponibles)
+            AppFutbol.datosSistema[1] = keyIntJugador; //Indicamos la posicion del jugador
+            new MostrarJugador();            
         }
-        
-    }//GEN-LAST:event_jListResutadoPartidosMouseClicked
+    }//GEN-LAST:event_jListResutadoBusquedaMouseClicked
+    
     /**
      *  Método para eliminar el contenido de la jList
      */
     public void vaciarResultado(){
         DefaultListModel modeloVacio = new DefaultListModel(); //Contendor
         modeloVacio.addElement("");
-        this.jListResutadoPartidos.setEnabled(false);
-        this.jListResutadoPartidos.setModel(modeloVacio); //Lo añaddimos al jList
-        this.jListResutadoPartidos.setToolTipText("");
+        this.jListResutadoBusqueda.setEnabled(false);
+        this.jListResutadoBusqueda.setModel(modeloVacio); //Lo añaddimos al jList
+        this.jListResutadoBusqueda.setToolTipText("");
     }
     /**
      * @param args the command line arguments
@@ -268,20 +252,20 @@ public class MostrarPartidosDeEquipo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MostrarPartidosDeEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarJugadoresEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MostrarPartidosDeEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarJugadoresEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MostrarPartidosDeEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarJugadoresEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MostrarPartidosDeEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarJugadoresEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MostrarPartidosDeEquipo().setVisible(true);
+                new MostrarJugadoresEquipo().setVisible(true);
             }
         });
     }
@@ -290,10 +274,10 @@ public class MostrarPartidosDeEquipo extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComBoxEquipos;
+    private javax.swing.JComboBox<String> jComboBoxEquipos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jListResutadoPartidos;
+    private javax.swing.JList<String> jListResutadoBusqueda;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelSubTitulo;
