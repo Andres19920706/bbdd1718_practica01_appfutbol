@@ -445,6 +445,52 @@ public class AltaPartido extends javax.swing.JFrame {
                                     AppFutbol.AltaPartido(p);
                                     this.dispose();
                                     AppFutbol.iu.setVisible(true);
+                
+                //2.8) Calculamos la posicion
+                                    int posicionEq1 =  AppFutbol.lEquipos.get(p.getEq1().getIdEquipo()).getPosicion();
+                                    int posicionEq2 =  AppFutbol.lEquipos.get(p.getEq2().getIdEquipo()).getPosicion();
+                        
+                        //2.8.1) Comprobmaos el equipo que gano el partido
+                                    int nuevaPosicionEq1;
+                                    int nuevaPosicionEq2;
+                                    if(p.getGolesA()==p.getGolesB()){ //Empate
+                                        nuevaPosicionEq1 = (posicionEq1 + AppFutbol.posiciones[1]);
+                                        nuevaPosicionEq2 = (posicionEq2 + AppFutbol.posiciones[1]);
+                                    }else{
+                                        if(p.getGolesA()>p.getGolesB()){ //Gana el equipo A
+                                            nuevaPosicionEq1 = (posicionEq1 + AppFutbol.posiciones[2]);
+                                            if(posicionEq2>AppFutbol.minPosicion){
+                                                nuevaPosicionEq2 = (posicionEq2 + AppFutbol.posiciones[0]);
+                                            }else{
+                                                nuevaPosicionEq2 = posicionEq2;
+                                                JOptionPane.showMessageDialog(null, "El equipo B esta en el rango máximo de descenso",
+                                                    "AppFutbol",JOptionPane.ERROR_MESSAGE); 
+                                            }
+                                        }else{//Gana el equipo B
+                                            nuevaPosicionEq2 = (posicionEq2 + AppFutbol.posiciones[2]);
+                                            if(posicionEq2>AppFutbol.minPosicion){
+                                                nuevaPosicionEq1 = (posicionEq1 + AppFutbol.posiciones[0]);
+                                            }else{
+                                                nuevaPosicionEq1 = posicionEq1;
+                                                JOptionPane.showMessageDialog(null, "El equipo A esta en el rango máximo de descenso",
+                                                    "AppFutbol",JOptionPane.ERROR_MESSAGE); 
+                                            } 
+                                        }
+                                    }
+                                    
+                        //2.8.2) Actualizamos la posicion.
+                                int identficadorEquipoA = p.getLeq1().getIdEquipo();
+                                int identficadorEquipoB = p.getLeq2().getIdEquipo();
+                                
+                                //Lista de Equipos
+                                AppFutbol.lEquipos.get(identficadorEquipoA).setPosicion(nuevaPosicionEq1);
+                                AppFutbol.lEquipos.get(identficadorEquipoB).setPosicion(nuevaPosicionEq2);
+                                System.out.println("Equipo 1: "+ AppFutbol.lEquipos.get(identficadorEquipoA).getPosicion());
+                                System.out.println("Equipo 2: "+ AppFutbol.lEquipos.get(identficadorEquipoB).getPosicion());
+                                //Lista de Partidos
+                                //AppFutbol.lPartidos.get(p.getIdPartido()).getEq1().setPosicion((int)nuevaPosicionEq1);
+                                //AppFutbol.lPartidos.get(p.getIdPartido()).getEq2().setPosicion((int)nuevaPosicionEq2);
+                                
 
                                 }else{//El numero de equipos seleccioando erroneo
                                     JOptionPane.showMessageDialog(null, MSG[5],

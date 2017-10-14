@@ -61,7 +61,7 @@ public class AppFutbolMenu extends javax.swing.JFrame {
         labelDefinicion.setText("Selecciona una opcion");
 
         listaTareas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "01: Alta Equipo.", "02: Baja Equipo.", "03: Alta Jugador.", "04: Baja Jugador.", "05: Alta Arbitro.", "06: Baja Arbitro.", "07: Alta Estadio.", "08: Alta Partido.", "09: Baja Partido.", "10: Mostrar datos del Sistema.", "11: Listar informacion de los Partidos dada una fecha.", "12: Listar los Partidos hechos por un Equipo.", "13: Listar los Jugadores que hay en una posicion.", "14: Listar los Jugadores de un Equipo y sus Posiciones.", "15: Cargar Sistema.", "16: Salvar los datos.", "17: Calcular el Campeon.", "18: Calcular las Posiciones" };
+            String[] strings = { "01: Alta Equipo.", "02: Baja Equipo.", "03: Alta Jugador.", "04: Baja Jugador.", "05: Alta Arbitro.", "06: Baja Arbitro.", "07: Alta Estadio.", "08: Alta Partido.", "09: Baja Partido.", "10: Mostrar datos del Sistema.", "11: Listar informacion de los Partidos dada una fecha.", "12: Listar los Partidos hechos por un Equipo.", "13: Listar los Jugadores que hay en una posicion.", "14: Listar los Jugadores de un Equipo y sus Posiciones.", "15: Cargar Sistema.", "16: Salvar los datos.", "17: Calcular el Campeon." };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -330,21 +330,26 @@ public class AppFutbolMenu extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Error al salvar los datos: "+ex,
                         "AppFutbol",JOptionPane.ERROR_MESSAGE);
                     }
-                    
-                    
+                      
                 }//Fin del if_else que comprueba si las listas estan vacias
                 this.setVisible(true);
                 
                 break;
             case 17:
-                JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,
-                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
                 //Calcular Campeon
-                break;
-            case 18:
-                JOptionPane.showMessageDialog(null, "Seleccion la opcion: "+opcion,
-                        "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
-                //Calcular Posiciones
+                String resultado="";
+                if(AppFutbol.lEquipos.isEmpty()){
+                    resultado = "No hay equipos";
+
+                }else{
+                    resultado = AppFutbol.CalcularCampeonTemporada();
+                }
+                
+                JOptionPane.showMessageDialog(null, resultado,
+                    "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+                this.setVisible(true);
+                
+                
                 break;
             default:
                 this.setVisible(true);

@@ -48,6 +48,12 @@ public class AppFutbol {
                                           //   3   , x      -  lEquipos
                                           //   4   , x      -  lPartidos  <-- Aqui me quedo
                                           //   5   , x      -  lEstadios
+    
+    public static int[] posiciones = {-1,1,2}; //Variable para el ranking de posiciones
+                                          //posiciones[0] -> Incremento de posición en caso de perder
+                                          //posiciones[1] -> Incremento de posición en caso de empatar
+                                          //posiciones[2] -> Incremento de posición en caso de ganar
+    public static final int minPosicion = -5; //Variable que india la posición minima de un jugador
     //Atributos
     
     //Un HashMap se puede definir como un diccionario de datos
@@ -352,10 +358,43 @@ public class AppFutbol {
         
     }
     //Métodos Opcionales
-    public void CalcularCampeonTemporada(){
+    public static String CalcularCampeonTemporada(){
+        
+        String resultado="";
+        Boolean variosGanadores = false;
+        int posi = 0;
+        String nameEquipoGanador = "";
+        for(Equipo recorrer : AppFutbol.lEquipos.values()){
+            if(recorrer.getPosicion()==posi && recorrer.getPosicion()!=0){
+                posi = recorrer.getPosicion();
+                nameEquipoGanador = nameEquipoGanador+", "+recorrer.getNameEquipo();
+                variosGanadores = true;
+            }else{
+                if(recorrer.getPosicion()>posi){
+                    nameEquipoGanador = recorrer.getNameEquipo();
+                    posi = recorrer.getPosicion();
+                    variosGanadores = false;
+                }
+            }
+        }
+        
+        if(posi==0){
+            resultado ="No hay ganador";
+        }else{
+            if(!variosGanadores){
+                resultado ="El campeon es: "+nameEquipoGanador+".\n Con la puntuacion:"+posi;
+            }else{
+                resultado ="Luchan por la victoria: "+nameEquipoGanador+".\n Con la puntuacion: "+posi;
+            }
+        }
+        
+        return resultado;
     }
-    public void CalcularPosicoinesEquipos(ArrayList<Equipo> lequipos){
+    /*
+    //Este metodo es integrado de forma automatica en la interfaz AltaPartido (punto 2.8)
+    public static void CalcularPosicoinesEquipos(){
     }
+    */
     
     
     
