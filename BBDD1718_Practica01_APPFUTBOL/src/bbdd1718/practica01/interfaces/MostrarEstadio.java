@@ -20,11 +20,10 @@ public class MostrarEstadio extends javax.swing.JFrame {
     public MostrarEstadio() {
         initComponents();
         this.setLocationRelativeTo(null);//centramos.
-        this.setTitle("Datos del partido");
+        this.setTitle("Datos del Estadio");
         this.setVisible(true);
         
         Estadio est = AppFutbol.lEstadios.get(new Integer(AppFutbol.datosSistema[1]));
-        System.out.println("key"+AppFutbol.datosSistema[1]+" Name: "+ est.getCiudad());
         
         this.inputCiudad.setText(est.getCiudad());
         this.inputDireccion.setText(est.getDireccion());
@@ -51,7 +50,7 @@ public class MostrarEstadio extends javax.swing.JFrame {
         inputCapacidad = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelSubTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelSubTitulo.setText("Datos del Estadio");

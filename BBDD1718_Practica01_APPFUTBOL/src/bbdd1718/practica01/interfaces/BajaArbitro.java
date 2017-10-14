@@ -21,6 +21,8 @@ public class BajaArbitro extends javax.swing.JFrame {
      */
     public BajaArbitro() {
         initComponents();
+        this.setLocationRelativeTo(null);//centramos.
+        this.setTitle("Baja Arbitro");
         //Mostramos los arbitros en el jList
         //AppFutbol.lArbitros
         DefaultListModel modelo = new DefaultListModel(); //Contendor
@@ -50,6 +52,7 @@ public class BajaArbitro extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         arbitrosActivos.setToolTipText("ID: Nombre");
         jScrollPane1.setViewportView(arbitrosActivos);

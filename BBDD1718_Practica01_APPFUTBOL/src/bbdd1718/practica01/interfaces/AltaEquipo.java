@@ -28,6 +28,8 @@ public class AltaEquipo extends javax.swing.JFrame {
      */
     public AltaEquipo() {
         initComponents();
+        this.setLocationRelativeTo(null);//centramos.
+        this.setTitle("Nuevo Equipo");
         //Mostramos
         //Lista de Estadiso
         this.jListaEstadios.addItem("Seleccione estadio");
@@ -69,6 +71,7 @@ public class AltaEquipo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

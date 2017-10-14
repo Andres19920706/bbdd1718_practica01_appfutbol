@@ -24,7 +24,7 @@ public class MostrarPartidosDadoFecha extends javax.swing.JFrame {
     public MostrarPartidosDadoFecha() {
         initComponents();
         this.setLocationRelativeTo(null);//centramos.
-        this.setTitle("Datos del partido");
+        this.setTitle("Datos del partido dado una fecha");
         vaciarResultado(); //Limpiamos el contenido de la caja de texto 
     }
 
@@ -49,7 +49,7 @@ public class MostrarPartidosDadoFecha extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

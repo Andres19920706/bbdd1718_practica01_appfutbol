@@ -26,6 +26,8 @@ public class ListarTodo extends javax.swing.JFrame {
      */
     public ListarTodo() {
         initComponents();
+        this.setLocationRelativeTo(null);//centramos.
+        this.setTitle("Mostrar datos del sistema");
     }
 
     /**
@@ -52,6 +54,7 @@ public class ListarTodo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

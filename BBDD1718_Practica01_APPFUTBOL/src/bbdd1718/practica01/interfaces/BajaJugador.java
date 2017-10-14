@@ -24,6 +24,8 @@ public class BajaJugador extends javax.swing.JFrame {
     
     public BajaJugador() {
         initComponents();
+        this.setLocationRelativeTo(null);//centramos.
+        this.setTitle("Baja Jugador");
         //Mostramos los judaroes en el jList
         //AppFutbol.lJugadores
         //Lista de Jugadores Disponibles
@@ -53,6 +55,7 @@ public class BajaJugador extends javax.swing.JFrame {
         buttonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

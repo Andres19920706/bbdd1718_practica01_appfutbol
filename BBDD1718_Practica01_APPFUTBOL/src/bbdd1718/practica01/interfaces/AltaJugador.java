@@ -28,7 +28,7 @@ public class AltaJugador extends javax.swing.JFrame {
     public AltaJugador() {
         initComponents();
         this.setLocationRelativeTo(null);//centramos.
-        this.setTitle("App Futbol -> Nuevo Jugador");
+        this.setTitle("Nuevo Jugador");
         
         for(int i=0;i<AppFutbol.posicionesJugador.length;i++){
             this.selectPosicion.addItem(AppFutbol.posicionesJugador[i]);
@@ -72,6 +72,7 @@ public class AltaJugador extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

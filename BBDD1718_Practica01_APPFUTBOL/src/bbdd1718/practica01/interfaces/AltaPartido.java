@@ -30,7 +30,7 @@ public class AltaPartido extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);//centramos.
-        this.setTitle("App Futbol -> Nuevo Partido");
+        this.setTitle("Nuevo Partido");
         //Inicializamos las listas
             //Lista de arbitros disponibles
         DefaultListModel modeloArbitro = new DefaultListModel(); //Contendor
@@ -87,6 +87,7 @@ public class AltaPartido extends javax.swing.JFrame {
         jDateChooser = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");
@@ -485,8 +486,7 @@ public class AltaPartido extends javax.swing.JFrame {
                                 //Lista de Equipos
                                 AppFutbol.lEquipos.get(identficadorEquipoA).setPosicion(nuevaPosicionEq1);
                                 AppFutbol.lEquipos.get(identficadorEquipoB).setPosicion(nuevaPosicionEq2);
-                                System.out.println("Equipo 1: "+ AppFutbol.lEquipos.get(identficadorEquipoA).getPosicion());
-                                System.out.println("Equipo 2: "+ AppFutbol.lEquipos.get(identficadorEquipoB).getPosicion());
+            
                                 //Lista de Partidos
                                 //AppFutbol.lPartidos.get(p.getIdPartido()).getEq1().setPosicion((int)nuevaPosicionEq1);
                                 //AppFutbol.lPartidos.get(p.getIdPartido()).getEq2().setPosicion((int)nuevaPosicionEq2);

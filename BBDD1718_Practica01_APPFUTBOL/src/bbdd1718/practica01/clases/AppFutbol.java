@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 import java.util.Date;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
-import java.util.Map;
 
 
 /**
@@ -90,9 +90,6 @@ public class AppFutbol {
         try{
             AppFutbol.lEquipos.put(new Integer(eq.getIdEquipo()), eq);
             resultado=true;
-            for(Equipo e : AppFutbol.lEquipos.values()){
-                System.out.println(e);
-            }
         }catch(Exception e){
             resultado=false;
         }
@@ -123,13 +120,12 @@ public class AppFutbol {
         //2º Borrar el equipo
         return resultado;
     }
+    
     public static void AltaJugador(Jugador j){
         AppFutbol.lJugadores.put(new Integer(j.id), j);
         AppFutbol.lJugadoresDisponibles.put(new Integer(j.id),j); //Lo insertasmo como disponible
-        for(Jugador ju : AppFutbol.lJugadores.values()){
-            System.out.println("Persona{"+"id="+ju.id+", nombre="+ju.nombre+", email="+ju.getEmail()+", posicion="+ju.getPosicion()+"}"+ju.toString());
-        }
     }
+    
     public static boolean BajaJugador(int id){
         //Comprobar si se elimina el jugador cuando este en un equipo.
         Boolean resultado=false;
@@ -171,10 +167,7 @@ public class AppFutbol {
     }
     public static void AltaArbitro (Arbitro a){
         AppFutbol.lArbitros.put(new Integer(a.id),a);
-        System.out.println("---- Lista Arbitros----");
-        for (Map.Entry<Integer, Arbitro> entry : lArbitros.entrySet()) {
-            System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
-        }
+
 
     }
     
@@ -194,24 +187,25 @@ public class AppFutbol {
     public static void AltaEstadio(Estadio e){ //Comprobar metodo.
 
         AppFutbol.lEstadios.put(new Integer(e.getIdEstadio()),e);
-        System.out.println("---- Lita Estadios --------");  
-        for (Map.Entry<Integer, Estadio> entry : lEstadios.entrySet()) {
-            System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
-        }
+       
+
         /*
+            System.out.println("---- Lita Estadios --------"); 
             for(Estadio eq : AppFutbol.lEstadios.values()){
-            System.out.println(eq.toString());
-        }
+                System.out.println(eq.toString());
+            }
+        
+           for (Map.Entry<Integer, Estadio> entry : lEstadios.entrySet()) {
+                System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
+            }
         */
 
     }
+    
     public static void AltaPartido(Partido p){
         AppFutbol.lPartidos.put(p.getIdPartido(), p);
-        System.out.println("----------");
-        for(Partido pa : AppFutbol.lPartidos.values()){
-            System.out.println(pa.getIdPartido()+" Arbitro:"+pa.getLarbitros().get(0).nombre+"Goles A: "+pa.getGolesA());
-        }
     }
+    
     public static boolean BajaPartido(int key){
         boolean resultado=false;
         try{
@@ -286,76 +280,66 @@ public class AppFutbol {
         
     }
     public static void CargarDatos() throws IOException, ClassNotFoundException{
-        System.out.println("Hola entro");
+        
         String directorio = "BBDD/";
-        //String[] nameFile = {"jugadores.txt","jugadoresDisponibles.txt","estadios.txt","arbitros.txt","equipos.txt","partidos.txt"};
         String[] nameFile = {"jugadores.txt","jugadoresDisponibles.txt","estadios.txt","equipos.txt","arbitros.txt","partidos.txt"};
         FileInputStream fileIn = null;
         ObjectInputStream datos = null;
-        
+        Boolean resultado = true;
         for(int i=0;i<nameFile.length;i++){
             try{
-                System.out.println("Hola entro 2");
                 fileIn=new FileInputStream(directorio+nameFile[i]);
                 datos=new ObjectInputStream(fileIn);
-                System.out.println("Hola entro 3");
                 switch (i){
                     case 0:
-                        System.out.println("Hola entro 4");
                         AppFutbol.lJugadores=(HashMap)datos.readObject();
-                        System.out.println("0");
+
                         break;
                     case 1:
                         AppFutbol.lJugadoresDisponibles=(HashMap)datos.readObject(); 
-                        System.out.println("1");
+
                         break;
                     case 2:
                         AppFutbol.lEstadios=(HashMap)datos.readObject();
-                        System.out.println("2");
+
                         break;
                     case 3:
                         AppFutbol.lEquipos=(HashMap)datos.readObject();
-                        System.out.println("3");
+
                         break;
                     case 4:
                         AppFutbol.lArbitros=(HashMap)datos.readObject();
-                        System.out.println("4");
+
                     break;
                     case 5:
                         AppFutbol.lPartidos=(HashMap)datos.readObject();
-                        System.out.println("5");
+                        
                     break;
                 }
                 
             }catch(IOException e){
                 System.out.println("Error en la lectura de los archivos");
+                resultado = false;
             }finally{
                 try{
                     datos.close();
                     fileIn.close();
                 }catch(NullPointerException o){
                     System.out.println("No contiene los archivos");
+                    resultado = false;
                 }
                
             }
             
         }
         
-        
-        
-        //
-        System.out.println("--------- LJugadores ---------");
-        System.out.println(lJugadores);
-        System.out.println("--------- LJugadoresDisponibles ---------");
-        System.out.println(lJugadoresDisponibles);
-        System.out.println("--------- LEstadios ---------");
-        System.out.println(lEstadios);
-        System.out.println("--------- LArbitros ---------");
-        System.out.println(lArbitros); 
-        System.out.println("--------- LPartidos ---------");
-        System.out.println(lPartidos);
-        System.out.println("-----------------------------");
-        
+        if(resultado){
+            JOptionPane.showMessageDialog(null, "Datos del Sistema Cargados con Exito",
+                    "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Datos del Sistema Cargados erroneamente",
+                    "AppFutbol",JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     //Métodos Opcionales
     public static String CalcularCampeonTemporada(){

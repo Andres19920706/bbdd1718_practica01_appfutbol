@@ -24,7 +24,7 @@ public class BajaPartido extends javax.swing.JFrame {
     public BajaPartido() {
         initComponents();
         this.setLocationRelativeTo(null);//centramos.
-        this.setTitle("App Futbol -> Eliminar Partido");
+        this.setTitle("Eliminar Partido");
         //Inicializamos las listas
             //Lista de arbitros disponibles
         DefaultListModel modeloArbitro = new DefaultListModel(); //Contendor
@@ -53,6 +53,7 @@ public class BajaPartido extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

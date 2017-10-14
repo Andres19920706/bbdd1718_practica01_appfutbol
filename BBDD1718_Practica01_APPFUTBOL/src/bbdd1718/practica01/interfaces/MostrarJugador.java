@@ -27,7 +27,7 @@ public class MostrarJugador extends javax.swing.JFrame {
         
         //
         Jugador j = AppFutbol.lJugadores.get(new Integer(AppFutbol.datosSistema[1]));
-        System.out.println("key"+AppFutbol.datosSistema[1]+" Name: "+j.nombre);
+
         this.inputNombre.setText(j.nombre);
         this.inputEmail.setText(j.getEmail());
         this.inputTelefono.setText(j.getTlf());
@@ -80,7 +80,7 @@ public class MostrarJugador extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         inputNum = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

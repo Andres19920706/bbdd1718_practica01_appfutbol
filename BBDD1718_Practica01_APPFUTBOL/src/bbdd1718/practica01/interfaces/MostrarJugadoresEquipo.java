@@ -22,7 +22,7 @@ public class MostrarJugadoresEquipo extends javax.swing.JFrame {
     public MostrarJugadoresEquipo() {
         initComponents();
         this.setLocationRelativeTo(null);//centramos.
-        this.setTitle("Posiciones de los Jugadores");
+        this.setTitle("Jugadores de un equipo");
         
         //Lista de estadios
         this.jComboBoxEquipos.addItem("Seleccione posicion");
@@ -55,7 +55,7 @@ public class MostrarJugadoresEquipo extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

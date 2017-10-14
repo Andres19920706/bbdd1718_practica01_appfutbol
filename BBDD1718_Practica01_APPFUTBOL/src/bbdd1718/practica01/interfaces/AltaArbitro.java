@@ -26,6 +26,8 @@ public class AltaArbitro extends javax.swing.JFrame {
     
     public AltaArbitro() {
         initComponents();
+        this.setLocationRelativeTo(null);//centramos.
+        this.setTitle("Nuevo arbitro");
         for(int i=0;i<AppFutbol.posicionesArbitro.length;i++){
             this.selectPosicion.addItem(AppFutbol.posicionesArbitro[i]);
         }
@@ -63,6 +65,7 @@ public class AltaArbitro extends javax.swing.JFrame {
         warningEmail = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

@@ -23,6 +23,8 @@ public class BajaEquipo extends javax.swing.JFrame {
      */
     public BajaEquipo() {
         initComponents();
+        this.setLocationRelativeTo(null);//centramos.
+        this.setTitle("Baja Equipo");
         //Lista de Jugadores Disponibles
         DefaultListModel modelo = new DefaultListModel(); //Contendor
         for (Map.Entry<Integer, Equipo> entry : AppFutbol.lEquipos.entrySet()) {
@@ -50,6 +52,7 @@ public class BajaEquipo extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         buttonCancel.setText("Menu");
         buttonCancel.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -24,7 +24,7 @@ public class MostrarArbitro extends javax.swing.JFrame {
         this.setVisible(true);
         
         Arbitro a = AppFutbol.lArbitros.get(new Integer(AppFutbol.datosSistema[1]));
-        System.out.println("key"+AppFutbol.datosSistema[1]+" Name: "+a.nombre);
+        
         this.inputNombre.setText(a.nombre);
         this.inputEmail.setText(a.getEmail());
         this.inputPosicion.setText(a.getTipo());
@@ -57,7 +57,7 @@ public class MostrarArbitro extends javax.swing.JFrame {
         inputSalario = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

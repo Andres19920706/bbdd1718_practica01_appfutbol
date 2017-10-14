@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author Andres
@@ -28,6 +29,7 @@ public class AppFutbolMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);//centramos.
         this.setTitle("Menu App Futbol");
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +46,7 @@ public class AppFutbolMenu extends javax.swing.JFrame {
         listaTareas = new javax.swing.JList<>();
         buttonAceptar = new javax.swing.JButton();
         buttonCancel = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -104,9 +107,11 @@ public class AppFutbolMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(labelDefinicion)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelTitulo)
                 .addGap(118, 118, 118))
             .addGroup(layout.createSequentialGroup()
@@ -120,7 +125,9 @@ public class AppFutbolMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelTitulo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTitulo)
+                    .addComponent(jLabel1))
                 .addGap(25, 25, 25)
                 .addComponent(labelDefinicion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -420,6 +427,7 @@ public class AppFutbolMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane ScrollTareas;
     private javax.swing.JButton buttonAceptar;
     private javax.swing.JButton buttonCancel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelDefinicion;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JList<String> listaTareas;

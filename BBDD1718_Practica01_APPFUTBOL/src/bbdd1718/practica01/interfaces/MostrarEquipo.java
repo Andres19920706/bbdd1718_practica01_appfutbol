@@ -24,7 +24,6 @@ public class MostrarEquipo extends javax.swing.JFrame {
         this.setVisible(true);
         
         Equipo e = AppFutbol.lEquipos.get(new Integer(AppFutbol.datosSistema[1]));
-        System.out.println("key"+AppFutbol.datosSistema[1]+" Name: "+e.getNameEquipo());
         
         this.inputNombre.setText(e.getNameEquipo());
         this.inputPosicion.setText(Integer.toString(e.getPosicion()));
@@ -65,7 +64,7 @@ public class MostrarEquipo extends javax.swing.JFrame {
         inputJugadores = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");

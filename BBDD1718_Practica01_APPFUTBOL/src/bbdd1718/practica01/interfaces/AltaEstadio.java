@@ -24,9 +24,7 @@ public class AltaEstadio extends javax.swing.JFrame{
     public AltaEstadio() {
         initComponents();
         this.setLocationRelativeTo(null);//centramos.
-        this.setTitle("App Futbol -> Nuevo Estadio");
-
-        
+        this.setTitle("Nuevo Estadio");     
     }
 
     /**
@@ -54,6 +52,7 @@ public class AltaEstadio extends javax.swing.JFrame{
         buttonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelTitulo.setText("App Futbol Menu");
